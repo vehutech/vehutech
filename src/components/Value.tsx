@@ -16,8 +16,8 @@ const Value = () => {
           maxIterations={20}
           className="text-2xl font-mono"
         />
-        <span className="w-[20%] pt-8 text-gray-500">
-          let's build something cool as we journey to andromeda
+        <span className="w-[20%] pt-8 text-gray-500 font-semibold">
+          let's build something cool as we journey to <span className="text-primary">andromeda</span>
         </span>
       </div>
       <div className="w-full h-dvh">

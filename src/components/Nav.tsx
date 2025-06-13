@@ -5,6 +5,7 @@ import { ModeToggle } from "./SwitcherTheme.tsx";
 import Logo from "./Logo.tsx";
 import { services } from "../lib/data.ts";
 import { Link } from "react-router-dom";
+import { Button } from "./ui/button.tsx";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +36,7 @@ const Navbar = () => {
     },
     {
       name: "Works",
-      href: "/portmfolio",
+      href: "/portfolio",
     },
     {
       name: "Resume",
@@ -66,11 +67,11 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 sm:px-40 px-4 py-2 ${
         isScrolled
-          ? "bg-custom-background/90 dark:bg-custom-background/90 backdrop-blur-lg shadow-lg border-b border-custom-border"
+          ? "bg-background/90 backdrop-blur-lg shadow-custom-lg border-b border-border"
           : "bg-transparent"
       }`}
     >
-      <div className="container-custom ">
+      <div className="container-custom">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Logo />
@@ -87,7 +88,7 @@ const Navbar = () => {
                   >
                     <motion.button
                       whileHover={{ y: -2 }}
-                      className="flex items-center space-x-1 px-3 py-2 text-custom-foreground hover:text-primary-teal dark:hover:text-primary-light-teal transition-colors duration-200 font-medium"
+                      className="flex items-center space-x-1 px-3 py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium focus-custom"
                     >
                       <span>{item.name}</span>
                       <motion.div
@@ -107,13 +108,13 @@ const Navbar = () => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-64 bg-custom-popover dark:bg-custom-popover rounded-lg shadow-xl border border-custom-border py-2"
+                          className="absolute top-full left-0 mt-2 w-64 bg-popover rounded-lg shadow-custom-lg border border-border py-2"
                         >
                           {item.dropdown.map((subItem) => (
                             <Link
                               key={subItem.name}
                               to={subItem.href}
-                              className="flex items-center space-x-3 px-4 py-3 text-custom-popover-foreground hover:bg-custom-muted dark:hover:bg-custom-muted hover:text-primary-teal dark:hover:text-primary-light-teal transition-colors duration-200"
+                              className="flex items-center space-x-3 px-4 py-3 text-popover-foreground hover:bg-muted hover:text-primary transition-colors duration-200 rounded-md mx-2"
                               onClick={closeDropdown}
                             >
                               <subItem.icon className="w-4 h-4" />
@@ -133,10 +134,10 @@ const Navbar = () => {
                   >
                     <Link
                       to={item.href}
-                      className="px-3 py-2 text-(--primary) hover:text-(--primary-pink) transition-colors duration-200 font-medium relative group custom-css whitespace-nowrap"
+                      className="px-3 py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium relative group whitespace-nowrap focus-custom"
                     >
                       {item.name}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300"></span>
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-custom-gradient group-hover:w-full transition-all duration-300"></span>
                     </Link>
                   </motion.div>
                 )}
@@ -154,46 +155,49 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
               className="hidden sm:block"
             >
-              <a
-                href="/contact"
-                className="px-6 py-2 bg-gradient-primary text-custom-primary-foreground rounded-lg font-medium shadow-lg hover:shadow-glow transition-all duration-300 hover-lift whitespace-nowrap"
-              >
-                Get Started
-              </a>
+              <Button variant="gradient">
+                <Link
+                  to="/contact"
+                  className="py-2 rounded-lg font-medium shadow-custom-lg hover:shadow-custom transition-all duration-300 whitespace-nowrap focus-custom relative overflow-hidden group"
+                >
+                  <span className="relative z-10 font-bold">Let's do this</span>
+                </Link>
+              </Button>
             </motion.div>
 
             {/* Mobile menu button */}
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+            <Button
+              variant="outline"
+              size="icon"
               onClick={toggleMobileMenu}
-              className="lg:hidden p-2 rounded-lg bg-custom-muted dark:bg-custom-muted hover:bg-custom-secondary dark:hover:bg-custom-secondary transition-colors duration-200"
+              className="lg:hidden focus-custom"
               aria-label="Toggle menu"
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (
                   <motion.div
                     key="close"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
+                    initial={{ scale: 0, rotate: 90 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    exit={{ scale: 0, rotate: -90 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X className="w-6 h-6 text-custom-foreground" />
+                    <X className="h-[1.2rem] w-[1.2rem]" />
                   </motion.div>
                 ) : (
                   <motion.div
                     key="menu"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
+                    initial={{ scale: 0, rotate: -90 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    exit={{ scale: 0, rotate: 90 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu className="w-6 h-6 text-custom-foreground" />
+                    <Menu className="h-[1.2rem] w-[1.2rem] " />
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.button>
+              <span className="sr-only">Toggle menu</span>
+            </Button>
           </div>
         </div>
 
@@ -205,7 +209,7 @@ const Navbar = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden border-t border-custom-border bg-custom-background/95 dark:bg-custom-background/95 backdrop-blur-lg"
+              className="lg:hidden border-t border-border bg-background/95 backdrop-blur-lg rounded-b-lg"
             >
               <div className="px-4 py-6 space-y-4">
                 {navigationItems.map((item, index) => (
@@ -219,7 +223,7 @@ const Navbar = () => {
                       <div>
                         <button
                           onClick={() => handleDropdownToggle(item.name)}
-                          className="flex items-center justify-between w-full px-3 py-2 text-custom-foreground hover:text-primary-teal dark:hover:text-primary-light-teal transition-colors duration-200 font-medium"
+                          className="flex items-center justify-between w-full px-3 py-2 text-foreground hover:text-primary hover:bg-muted rounded-lg transition-colors duration-200 font-medium focus-custom"
                         >
                           <span>{item.name}</span>
                           <motion.div
@@ -238,13 +242,13 @@ const Navbar = () => {
                               animate={{ opacity: 1, height: "auto" }}
                               exit={{ opacity: 0, height: 0 }}
                               transition={{ duration: 0.2 }}
-                              className="ml-4 mt-2 space-y-2"
+                              className="ml-4 mt-2 space-y-2 bg-muted/50 rounded-lg p-2"
                             >
                               {item.dropdown.map((subItem) => (
-                                <a
+                                <Link
                                   key={subItem.name}
-                                  href={subItem.href}
-                                  className="flex items-center space-x-3 px-3 py-2 text-custom-muted-foreground hover:text-primary-teal dark:hover:text-primary-light-teal transition-colors duration-200"
+                                  to={subItem.href}
+                                  className="flex items-center space-x-3 px-3 py-2 text-muted-foreground hover:text-primary hover:bg-muted rounded-lg transition-colors duration-200 focus-custom"
                                   onClick={() => {
                                     setIsOpen(false);
                                     setActiveDropdown(null);
@@ -254,20 +258,20 @@ const Navbar = () => {
                                   <span className="text-sm">
                                     {subItem.name}
                                   </span>
-                                </a>
+                                </Link>
                               ))}
                             </motion.div>
                           )}
                         </AnimatePresence>
                       </div>
                     ) : (
-                      <a
-                        href={item.href}
-                        className="block px-3 py-2 text-(--primary) hover:text-(--primary-pink) transition-colors duration-200 font-medium"
+                      <Link
+                        to={item.href}
+                        className="block px-3 py-2 text-foreground hover:text-primary hover:bg-muted rounded-lg transition-colors duration-200 font-medium focus-custom"
                         onClick={() => setIsOpen(false)}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     )}
                   </motion.div>
                 ))}
@@ -276,15 +280,16 @@ const Navbar = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: navigationItems.length * 0.1 }}
-                  className="pt-4 border-t border-custom-border"
+                  className="pt-4 border-t border-border"
                 >
-                  <a
-                    href="/contact"
-                    className="block w-full px-6 py-3 bg-gradient-primary text-custom-primary-foreground text-center rounded-lg font-medium shadow-lg hover:shadow-glow hover-lift"
+                  <Link
+                    to="/contact"
+                    className="block w-full px-6 py-3 bg-custom-gradient text-whitish text-center rounded-lg font-medium shadow-custom-lg hover:shadow-custom transition-all duration-300 relative overflow-hidden group focus-custom"
                     onClick={() => setIsOpen(false)}
                   >
-                    Get Started
-                  </a>
+                    <span className="relative z-10">Get Started</span>
+                    <div className="absolute inset-0 bg-custom-gradient-radial opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </Link>
                 </motion.div>
               </div>
             </motion.div>

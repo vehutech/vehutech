@@ -7,7 +7,7 @@ import {
   Users,
   ArrowRight,
 } from "lucide-react";
-import BlurText from "./BlutText";
+import BlurText from "./util/BlutText";
 import SpotlightCard from "./SpotlightCard";
 
 const IdentityDes = () => {
@@ -39,12 +39,15 @@ const IdentityDes = () => {
   ];
 
   return (
-    <div id="design" className="min-h-screen bg-gradient-to-br  text-white overflow-hidden">
+    <div
+      id="design"
+      className="min-h-screen bg-gradient-to-br  text-white overflow-hidden"
+    >
       {/* Hero Section */}
       <div className="relative px-8 py-20">
         <div className="max-w-6xl  mx-auto">
           <div className="mb-8">
-            <h1 className="text-7xl font-bold text-primary mb-4 flex justify-start sm:justify-center">
+            <h1 className="text-7xl font-bold text-custom-gradient mb-8 flex justify-start sm:justify-center">
               Design
             </h1>
             <BlurText
@@ -57,10 +60,11 @@ const IdentityDes = () => {
           </div>
 
           <div className="mt-12 text-lg text-gray-400 max-w-4xl leading-relaxed flex justify-start sm:justify-center text-start sm:text-center">
-            I believe every brand has a unique story waiting to be told. I specialize in translating your vision into
-            powerful visual narratives that connect, inspire, and drive success.
-            From startups to established companies, I create identities that
-            stand the test of time.
+            I believe every brand has a unique story waiting to be told. I
+            specialize in translating your vision into powerful visual
+            narratives that connect, inspire, and drive success. From startups
+            to established companies, I create identities that stand the test of
+            time.
           </div>
         </div>
       </div>
@@ -102,8 +106,8 @@ const IdentityDes = () => {
           <Users className="w-16 h-16 mx-auto mb-6 text-green-400" />
           <h2 className="text-5xl font-bold mb-6">Ready to Tell Your Story?</h2>
           <p className="text-xl text-gray-400 mb-8 leading-relaxed">
-            Let's collaborate to create a design that captures your essence
-            and connects with your audience on a deeper level.
+            Let's collaborate to create a design that captures your essence and
+            connects with your audience on a deeper level.
           </p>
           <button
             className="group px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 

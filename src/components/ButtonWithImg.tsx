@@ -1,12 +1,21 @@
+import { Link } from "react-router-dom";
+import { Button } from "./ui/button";
+
 interface ButtonWithImgProps {
   imgPath: string;
   imgAltText: string;
   btnText: string;
-  variant: "outline" | "default" | "secondary" | "outline" | "link" | "ghost";
+  variant:
+    | "outline"
+    | "default"
+    | "secondary"
+    | "destructive"
+    | "link"
+    | "ghost";
   parentUtilityClasses: string;
   imgUtilityClasses: string;
   btnTextUtilityClasses: string;
-  href?: string;
+  href: string;
 }
 
 export function ButtonWithImg({
@@ -16,22 +25,26 @@ export function ButtonWithImg({
   parentUtilityClasses,
   imgUtilityClasses,
   btnTextUtilityClasses,
+  variant,
   href,
 }: ButtonWithImgProps) {
   return (
-    <button className={parentUtilityClasses + "p-8"}>
-      {href ? (
-        <a href={href} className="flex items-center">
-          <img className={imgUtilityClasses} src={imgPath} alt={imgAltText} />
-          <span className={btnTextUtilityClasses}>{btnText}</span>
-        </a>
-
+    <>
+      {variant === "link" ? (
+        <Button asChild variant={variant} className={parentUtilityClasses}>
+          <Link to={href} className="flex items-center">
+            <img className={imgUtilityClasses} src={imgPath} alt={imgAltText} />
+            <span className={btnTextUtilityClasses}>{btnText}</span>
+          </Link>
+        </Button>
       ) : (
-        <>
-          <img className={imgUtilityClasses} src={imgPath} alt={imgAltText} />
-          <span className={btnTextUtilityClasses}>{btnText}</span>
-        </>
+        <Button variant={variant} className={parentUtilityClasses}>
+          <span className="flex items-center">
+            <img className={imgUtilityClasses} src={imgPath} alt={imgAltText} />
+            <span className={btnTextUtilityClasses}>{btnText}</span>
+          </span>
+        </Button>
       )}
-    </button>
+    </>
   );
 }

@@ -1,5 +1,12 @@
-import { Bike, Brain, LucideBlocks, Phone, ShoppingBag } from "lucide-react";
-import BlurText from "./BlutText";
+import {
+  Bike,
+  Brain,
+  Link as LinkIcon,
+  LucideBlocks,
+  Phone,
+  ShoppingBag,
+} from "lucide-react";
+import BlurText from "./util/BlutText";
 import SpotlightCard from "./SpotlightCard";
 import { Button } from "./ui/button";
 
@@ -7,23 +14,23 @@ const Idea = () => {
   const bigIdeas = [
     {
       idea: "E-Commerce",
-      icon: <ShoppingBag size={120} color="#999999" />,
+      icon: <ShoppingBag className="text-whitish" size={120} />,
     },
     {
       idea: "Mobile Development",
-      icon: <Phone size={120} color="#999999" />,
+      icon: <Phone className="text-whitish" size={120} />,
     },
     {
       idea: "Blockchain",
-      icon: <LucideBlocks size={120} color="#999999" />,
+      icon: <LucideBlocks className="text-whitish" size={120} />,
     },
     {
       idea: "Logistics",
-      icon: <Bike size={120} color="#999999" />,
+      icon: <Bike size={120} className="text-whitish" />,
     },
     {
       idea: "Artificial Intelligence",
-      icon: <Brain size={120} color="#999999" />,
+      icon: <Brain size={120} className="text-whitish" />,
     },
   ];
 
@@ -34,10 +41,10 @@ const Idea = () => {
   const IdeaCard = ({ idea, icon }) => (
     <SpotlightCard
       className="custom-spotlight-card flex items-center flex-col size-50 justify-center mx-8 flex-shrink-0"
-      spotlightColor="rgba(0, 229, 255, 0.2)"
+      spotlightColor="rgba(38, 81, 251, 0.8)"
     >
       {icon}
-      <span className="mt-4 text-center text-white">{idea}</span>
+      <span className="mt-4 text-center text-whitish">{idea}</span>
     </SpotlightCard>
   );
 
@@ -84,10 +91,13 @@ const Idea = () => {
       </div>
 
       <Button
-        variant="link"
-        className="cursor-pointer mt-10 flex w-full justify-center  text-4xl"
+        variant="ghost"
+        className="flex items-center m-auto p-4 mt-20 justify-center text-4xl mb-4"
       >
-        Let's Do This!
+        <span className="flex items-center gap-4">
+          <LinkIcon className="text-2xl"/>
+          Let's Do This
+        </span>
       </Button>
 
       <style jsx>{`

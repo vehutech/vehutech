@@ -1,0 +1,11 @@
+blackish: #0c0f14
+carton: #f0af83
+bluish: #2653fb
+cyan: #11e5fb
+whitish: #fbe5b8
+
+only implement these below two in gradient mode:
+purple: #5225ca
+pinkish: #e2c0fd
+
+gradient: from bluish to purple to pinkish and then cyan

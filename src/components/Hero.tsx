@@ -1,13 +1,12 @@
 import Squares from "./util/Squares";
-import BlurText from "./BlutText";
+import BlurText from "./util/BlutText";
 import { useState } from "react";
-import TrueFocus from "./TrueFocus";
+import TrueFocus from "./util/TrueFocus";
 import { Button } from "./ui/button";
-import { useTheme } from "./theme-provider";
+import { useTheme } from "./util/theme-provider";
 
 const Hero = () => {
-
-  const { resolvedTheme } = useTheme()
+  const { resolvedTheme } = useTheme();
 
   const [isAnimationComplete, setIsAnimationCOmplete] = useState(false);
 
@@ -22,7 +21,7 @@ const Hero = () => {
         <div className="w-[65%] sm:px-40 px-4">
           {!isAnimationComplete ? (
             <BlurText
-              text="Welcome!"
+              text="Welcome"
               delay={150}
               animateBy="words"
               direction="top"
@@ -39,7 +38,10 @@ const Hero = () => {
               pauseBetweenAnimations={1}
             />
           )}
-          <Button className="text-2xl py-4" variant="secondary">
+          <Button
+            className="text-2xl font-extrabold py-4"
+            variant="gradient"
+          >
             Something Cool
           </Button>
         </div>
