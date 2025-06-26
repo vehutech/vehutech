@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 import { useTheme } from "./util/theme-provider";
 
 const Hero = () => {
-  const { resolvedTheme } = useTheme();
+  const { theme } = useTheme();
 
   const [isAnimationComplete, setIsAnimationCOmplete] = useState(false);
 
@@ -18,7 +18,7 @@ const Hero = () => {
     <div className="relative">
       <div className="absolute w-full flex items-center justify-between">
         {/* texts */}
-        <div className="w-[65%] sm:px-40 px-4">
+        <div className="sm:w-[65%] w-[50%] sm:px-40 px-4">
           {!isAnimationComplete ? (
             <BlurText
               text="Welcome"
@@ -39,7 +39,7 @@ const Hero = () => {
             />
           )}
           <Button
-            className="text-2xl font-extrabold py-4"
+            className="text-xl sm:text-2xl font-extrabold py-4"
             variant="gradient"
           >
             Something Cool
@@ -57,7 +57,7 @@ const Hero = () => {
           speed={0.5}
           squareSize={40}
           direction="diagonal" // up, down, left, right, diagonal
-          borderColor={resolvedTheme === "light" ? "#fff" : "#ccc"}
+          borderColor={theme === "light" ? "#fff" : "#ccc"}
           hoverFillColor="#222"
         />
       </div>

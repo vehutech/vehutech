@@ -5,10 +5,12 @@ import {
   Target,
   Layers,
   Users,
-  ArrowRight,
 } from "lucide-react";
 import BlurText from "./util/BlutText";
 import SpotlightCard from "./SpotlightCard";
+import { Button } from "./ui/button";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const IdentityDes = () => {
   const designPhilosophy = [
@@ -55,11 +57,11 @@ const IdentityDes = () => {
               delay={200}
               animateBy="words"
               direction="bottom"
-              className="text-2xl text-gray-300 max-w-3xl mx-auto flex justify-start sm:justify-center"
+              className="text-2xl text-foreground max-w-3xl mx-auto flex justify-start sm:justify-center"
             />
           </div>
 
-          <div className="mt-12 text-lg text-gray-400 max-w-4xl leading-relaxed flex justify-start sm:justify-center text-start sm:text-center">
+          <div className="mt-12 text-lg text-foreground max-w-4xl leading-relaxed flex justify-start sm:justify-center text-start sm:text-center">
             I believe every brand has a unique story waiting to be told. I
             specialize in translating your vision into powerful visual
             narratives that connect, inspire, and drive success. From startups
@@ -73,9 +75,11 @@ const IdentityDes = () => {
       <div className="px-8 py-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <Lightbulb className="w-12 h-12 mx-auto mb-4 text-yellow-400" />
-            <h2 className="text-4xl font-bold mb-4">Design Philosophy</h2>
-            <p className="text-gray-400 text-lg">
+            <Lightbulb className="w-12 h-12 mx-auto mb-4 text-carton" />
+            <h2 className="text-4xl text-foreground font-bold mb-4">
+              Design Philosophy
+            </h2>
+            <p className="text-foreground text-lg">
               The principles that guide every creative decision
             </p>
           </div>
@@ -87,11 +91,11 @@ const IdentityDes = () => {
                 className="p-8 h-full hover:scale-105 transition-transform duration-300"
                 spotlightColor="rgba(168, 85, 247, 0.15)"
               >
-                <div className="text-purple-400 mb-4">{item.icon}</div>
-                <h3 className="text-xl font-semibold mb-3 text-white">
+                <div className="text-primary mb-4">{item.icon}</div>
+                <h3 className="text-xl font-semibold mb-3 text-carton">
                   {item.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-whitish text-sm leading-relaxed">
                   {item.description}
                 </p>
               </SpotlightCard>
@@ -103,20 +107,30 @@ const IdentityDes = () => {
       {/* CTA Section */}
       <div className="px-8 py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <Users className="w-16 h-16 mx-auto mb-6 text-green-400" />
-          <h2 className="text-5xl font-bold mb-6">Ready to Tell Your Story?</h2>
-          <p className="text-xl text-gray-400 mb-8 leading-relaxed">
+          <Users className="w-16 h-16 mx-auto mb-6 text-primary" />
+          <h2 className="text-5xl font-bold mb-6 text-foreground">
+            Ready to Tell Your Story?
+          </h2>
+          <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
             Let's collaborate to create a design that captures your essence and
             connects with your audience on a deeper level.
           </p>
-          <button
-            className="group px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 
-                             rounded-full text-white font-semibold text-lg hover:scale-105 
-                             transition-all duration-300 shadow-2xl hover:shadow-purple-500/25"
+
+          {/* CTA Button */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="hidden sm:block"
           >
-            Start Your Brand Journey
-            <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
+            <Button size="lg" variant="outline" asChild>
+              <Link
+                to="/contact"
+                className="py-2 rounded-lg hover:shadow-custom transition-all duration-300 whitespace-nowrap focus-custom relative overflow-hidden group flex text-4xl !text-custom-gradient !hover:text-custom-gradient font-black"
+              >
+                Let's do this
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </div>
     </div>

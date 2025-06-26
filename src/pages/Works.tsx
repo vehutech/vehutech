@@ -97,7 +97,7 @@ const categories = [
 ];
 
 const Works = () => {
-  const { resolvedTheme } = useTheme();
+  const { theme } = useTheme();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredWorks, setFilteredWorks] = useState(worksData);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
@@ -128,8 +128,8 @@ const Works = () => {
           speed={0.3}
           squareSize={30}
           direction="up"
-          borderColor={resolvedTheme === "light" ? "#e5e7eb" : "#374151"}
-          hoverFillColor={resolvedTheme === "light" ? "#f3f4f6" : "#1f2937"}
+          borderColor={theme === "light" ? "#e5e7eb" : "#374151"}
+          hoverFillColor={theme === "light" ? "#f3f4f6" : "#1f2937"}
         />
       </div>
 

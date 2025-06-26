@@ -9,6 +9,7 @@ import {
 import BlurText from "./util/BlutText";
 import SpotlightCard from "./SpotlightCard";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 const Idea = () => {
   const bigIdeas = [
@@ -38,7 +39,12 @@ const Idea = () => {
   const leftScrollingIdeas = bigIdeas.slice(0, Math.ceil(bigIdeas.length / 2));
   const rightScrollingIdeas = bigIdeas.slice(Math.ceil(bigIdeas.length / 2));
 
-  const IdeaCard = ({ idea, icon }) => (
+  interface IdeaCardProps {
+    idea: string;
+    icon: React.ReactNode;
+  }
+
+  const IdeaCard = ({ idea, icon }: IdeaCardProps) => (
     <SpotlightCard
       className="custom-spotlight-card flex items-center flex-col size-50 justify-center mx-8 flex-shrink-0"
       spotlightColor="rgba(38, 81, 251, 0.8)"
@@ -89,18 +95,18 @@ const Idea = () => {
           )}
         </div>
       </div>
-
+  
       <Button
-        variant="ghost"
+        variant="link"
         className="flex items-center m-auto p-4 mt-20 justify-center text-4xl mb-4"
       >
-        <span className="flex items-center gap-4">
+        <Link to="/contact" className="flex items-center gap-4">
           <LinkIcon className="text-2xl"/>
           Let's Do This
-        </span>
+        </Link>
       </Button>
 
-      <style jsx>{`
+      <style>{`
         @keyframes scroll-left {
           0% {
             transform: translateX(0);

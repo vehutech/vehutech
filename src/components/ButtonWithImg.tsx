@@ -8,6 +8,7 @@ interface ButtonWithImgProps {
   variant:
     | "outline"
     | "default"
+    | "gradient"
     | "secondary"
     | "destructive"
     | "link"
@@ -30,7 +31,7 @@ export function ButtonWithImg({
 }: ButtonWithImgProps) {
   return (
     <>
-      {variant === "link" ? (
+      {href ? (
         <Button asChild variant={variant} className={parentUtilityClasses}>
           <Link to={href} className="flex items-center">
             <img className={imgUtilityClasses} src={imgPath} alt={imgAltText} />

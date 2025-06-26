@@ -1,17 +1,12 @@
-import {
-  Palette,
-  PenTool,
-  Code,
-  Pen,
-} from "lucide-react";
+import { Palette, PenTool, Code, Pen } from "lucide-react";
 
 export const currentYear = new Date().getFullYear();
 
 export const companyName = "Vehutech";
 
-export const shortBreif =
-  "A renowned PR and Media firm offering complete range of services from designed photography to digital marketing since 2014.";
-
+export const shortBrief =
+  "I am a passionate software engineer dedicated to crafting modern interactions and intuitive design experiences that just work.";
+  
 export const services = [
   {
     name: "Design",
