@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { ModeToggle } from "./SwitcherTheme.tsx";
 import Logo from "./Logo.tsx";
-import { services } from "../lib/data.ts";
+import { services, courses } from "../lib/data.ts";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button.tsx";
 
@@ -41,6 +41,11 @@ const Navbar = () => {
     {
       name: "Resume",
       href: "/resume",
+    },
+    {
+      name: "Learn",
+      href: "/learn",
+      dropdown: courses,
     },
   ];
 

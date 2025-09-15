@@ -163,6 +163,10 @@
       color 0.2s ease-in-out,
       border-color 0.2s ease-in-out;
   }
+  button,
+  a {
+    @apply whitespace-nowrap cursor-pointer;
+  }
 }
 
 @layer components {

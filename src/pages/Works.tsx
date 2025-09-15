@@ -13,25 +13,25 @@ const worksData = [
     title: "E-Commerce Platform",
     description:
       "Full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, and admin dashboard.",
-    image: "/project1.jpg",
+    image: "/python_course.jpg",
     technologies: ["React", "Node.js", "MongoDB", "Stripe"],
     category: "Web Development",
     date: "2024",
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com/username/project",
+    githubRepo: "https://github.com/vehutech/100DaysOfPython",
     featured: true,
   },
   {
     id: 2,
-    title: "AI Chat Application",
+    title: "Cookie Design",
     description:
-      "Real-time chat application with AI integration using OpenAI API. Built with Next.js and Socket.io for seamless communication.",
-    image: "/project2.jpg",
-    technologies: ["Next.js", "OpenAI", "Socket.io", "TypeScript"],
-    category: "AI/ML",
+      "Designing a Privacy-Centric Cookie Consent Interface to Enhance User Understanding and Compliance",
+    image: "/cookie_design.jpg",
+    technologies: ["React", "Typescript", "Tailwind", ""],
+    category: "Research",
     date: "2024",
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/username/project",
+    liveUrl: "https://cookie-design.vercel.app/",
+    githubRepo: "cookie_design",
     featured: true,
   },
   {
@@ -44,7 +44,7 @@ const worksData = [
     category: "Web Development",
     date: "2024",
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com/username/project",
+    githubRepo: "https://github.com/username/project",
     featured: false,
   },
   {
@@ -57,7 +57,7 @@ const worksData = [
     category: "Web Development",
     date: "2023",
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com/username/project",
+    githubRepo: "https://github.com/username/project",
     featured: false,
   },
   {
@@ -70,7 +70,7 @@ const worksData = [
     category: "Mobile Development",
     date: "2023",
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com/username/project",
+    githubRepo: "https://github.com/username/project",
     featured: false,
   },
   {
@@ -83,7 +83,7 @@ const worksData = [
     category: "Data Science",
     date: "2023",
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com/username/project",
+    githubRepo: "https://github.com/username/project",
     featured: false,
   },
 ];
@@ -92,8 +92,10 @@ const categories = [
   "All",
   "Web Development",
   "Mobile Development",
+  "Desktop Development",
   "AI/ML",
-  "Design",
+  "Ongoing",
+  "Research",
 ];
 
 const Works = () => {
@@ -183,11 +185,7 @@ const Works = () => {
               key={category + index}
               variant={selectedCategory === category ? "default" : "outline"}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 transition-all duration-300 ${
-                selectedCategory === category
-                  ? "bg-gradient-primary text-custom-primary-foreground shadow-glow"
-                  : "hover:bg-custom-muted"
-              }`}
+              className={`px-6 py-2 transition-all duration-300`}
             >
               {category}
             </Button>
@@ -222,7 +220,7 @@ const Works = () => {
                       alt={work.title}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
 
                   <div className="p-6">
@@ -273,7 +271,7 @@ const Works = () => {
                       </Button>
                       <Button size="sm" variant="outline" asChild>
                         <a
-                          href={work.githubUrl}
+                          href={"https://github.com//"+work.githubRepo}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -343,7 +341,7 @@ const Works = () => {
                       alt={work.title}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
 
                   <div className="p-6">
@@ -404,7 +402,7 @@ const Works = () => {
                         className="flex-1"
                       >
                         <a
-                          href={work.githubUrl}
+                          href={"https://github.com/vehutech/"+work.githubRepo}
                           target="_blank"
                           rel="noopener noreferrer"
                         >

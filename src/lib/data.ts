@@ -1,4 +1,12 @@
-import { Palette, PenTool, Code, Pen } from "lucide-react";
+import {
+  Palette,
+  PenTool,
+  Code,
+  Pen,
+  Computer,
+  Code2,
+  Code2Icon,
+} from "lucide-react";
 
 export const currentYear = new Date().getFullYear();
 
@@ -6,7 +14,7 @@ export const companyName = "Vehutech";
 
 export const shortBrief =
   "I am a passionate software engineer dedicated to crafting modern interactions and intuitive design experiences that just work.";
-  
+
 export const services = [
   {
     name: "Design",
@@ -27,6 +35,29 @@ export const services = [
     name: "Desktop Dev",
     href: "/#desktop-dev",
     icon: Palette,
+  },
+];
+
+export const courses = [
+  {
+    name: "Computer Science",
+    href: "/computerscience",
+    icon: Computer,
+  },
+  {
+    name: "Python - 100DaysOfPython",
+    href: "learn/python",
+    icon: Code2,
+  },
+  {
+    name: "NextJs",
+    href: "/nextjs",
+    icon: Code2Icon,
+  },
+  {
+    name: "Rust",
+    href: "/rust",
+    icon: Code2Icon,
   },
 ];
 

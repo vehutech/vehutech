@@ -5,7 +5,9 @@ import Hyperspeed from "./HyperSpeed";
 const Value = () => {
   return (
     <div className="relative">
-      <span className="text-[20rem] font-serif absolute top-[10%] left-[50%] translate-x-[-50%] translate-y-[-50%]">"</span>
+      <span className="text-[20rem] font-serif absolute top-[10%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+        "
+      </span>
       <div className="mt-30 m-auto w-[50%] text-center absolute top-[10%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
         <DecryptedText
           text="Every line purposeful. Every design decision deliberate.
@@ -17,7 +19,8 @@ const Value = () => {
           className="text-2xl font-mono"
         />
         <span className="w-[20%] pt-8 text-gray-500 font-semibold">
-          let's build something cool as we journey to <span className="text-primary">andromeda</span>
+          let's build something cool as we journey to{" "}
+          <span className="text-primary">andromeda</span>
         </span>
       </div>
       <div className="w-full h-dvh">
@@ -29,7 +32,7 @@ const Value = () => {
             length: 400,
             roadWidth: 10,
             islandWidth: 2,
-            lanesPerRoad: 1,
+            lanesPerRoad: 4,
             fov: 90,
             fovSpeedUp: 150,
             speedUp: 2,

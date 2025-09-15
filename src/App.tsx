@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Error404 from "./components/404";
 import Works from "./pages/Works";
 import ContactUsPage from "./pages/ContactUs";
+import PythonChallengeWriteup from "./pages/Python";
 
 function App() {
   return (
@@ -13,11 +14,12 @@ function App() {
       <main className="overflow-x-hidden">
         <Navbar />
         <Routes>
-          <Route path="/" element={<HomePage/>}/>
-          <Route path="/resume" element={<ResumePage />}/>
-          <Route path="/contact" element={<ContactUsPage />}/>
-          <Route path="/portfolio" element={<Works />}/>
-          <Route path="/*" element={<Error404 />}/>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/resume" element={<ResumePage />} />
+          <Route path="/contact" element={<ContactUsPage />} />
+          <Route path="/portfolio" element={<Works />} />
+          <Route path="/learn/python" element={<PythonChallengeWriteup />} />
+          <Route path="/*" element={<Error404 />} />
         </Routes>
         <Footer />
       </main>

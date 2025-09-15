@@ -515,12 +515,10 @@ class CarLights {
       const offsetY = random(options.carFloorSeparation) + radius * 1.3;
       const offsetZ = -random(options.length);
 
-      // left side
       aOffset.push(laneX - carWidth / 2);
       aOffset.push(offsetY);
       aOffset.push(offsetZ);
 
-      // right side
       aOffset.push(laneX + carWidth / 2);
       aOffset.push(offsetY);
       aOffset.push(offsetZ);
@@ -806,7 +804,7 @@ class Road {
     this.uTime = { value: 0 };
   }
 
-  createPlane(side: number, _width: number, isRoad: boolean) {
+  createPlane(side: number, width: number, isRoad: boolean) {
     const options = this.options;
     const segments = 100;
     const geometry = new THREE.PlaneGeometry(
@@ -937,11 +935,6 @@ const roadMarkings_fragment = `
   float sideLines = step(1.0 - brokenLineWidth, fract((uv.x - laneWidth * (uLanes - 1.0)) * 2.0)) + step(brokenLineWidth, uv.x);
 
   brokenLines = mix(brokenLines, sideLines, uv.x);
-  // color = mix(color, uBrokenLinesColor, brokenLines);
-
-  // vec2 noiseFreq = vec2(4., 7000.);
-  // float roadNoise = random(floor(uv * noiseFreq) / noiseFreq) * 0.02 - 0.01; 
-  // color += roadNoise;
 `;
 
 const roadFragment = roadBaseFragment
@@ -1228,11 +1221,6 @@ class App {
     if (updateCamera) {
       this.camera.updateProjectionMatrix();
     }
-
-    if (this.options.isHyper) {
-      // Just to show it works:
-      console.log(this.options.isHyper);
-    }
   }
 
   render(delta: number) {
@@ -1241,6 +1229,23 @@ class App {
 
   dispose() {
     this.disposed = true;
+
+    if (this.renderer) {
+      this.renderer.dispose();
+    }
+    if (this.composer) {
+      this.composer.dispose();
+    }
+    if (this.scene) {
+      this.scene.clear();
+    }
+
+    window.removeEventListener("resize", this.onWindowResize.bind(this));
+    if (this.container) {
+      this.container.removeEventListener("mousedown", this.onMouseDown);
+      this.container.removeEventListener("mouseup", this.onMouseUp);
+      this.container.removeEventListener("mouseout", this.onMouseUp);
+    }
   }
 
   setSize(width: number, height: number, updateStyles: boolean) {
@@ -1267,20 +1272,37 @@ const Hyperspeed: FC<HyperspeedProps> = ({ effectOptions = {} }) => {
     ...effectOptions,
   };
   const hyperspeed = useRef<HTMLDivElement>(null);
+  const appRef = useRef<App | null>(null);
 
   useEffect(() => {
+    if (appRef.current) {
+      appRef.current.dispose();
+      const container = document.getElementById("lights");
+      if (container) {
+        while (container.firstChild) {
+          container.removeChild(container.firstChild);
+        }
+      }
+    }
+
     const container = hyperspeed.current;
     if (!container) return;
 
-    if (typeof mergedOptions.distortion === "string") {
-      mergedOptions.distortion = distortions[mergedOptions.distortion];
+    const options = { ...mergedOptions };
+    if (typeof options.distortion === "string") {
+      options.distortion = distortions[options.distortion];
     }
 
-    const myApp = new App(container, mergedOptions);
+    const myApp = new App(container, options);
+    appRef.current = myApp;
     myApp.loadAssets().then(myApp.init);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    return () => {
+      if (appRef.current) {
+        appRef.current.dispose();
+      }
+    };
+  }, [mergedOptions]);
 
   return <div id="lights" className="w-full h-full" ref={hyperspeed}></div>;
 };
