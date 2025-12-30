@@ -41,7 +41,7 @@ export const services = [
 export const courses = [
   {
     name: "Computer Science",
-    href: "/computerscience",
+    href: "learn/csc",
     icon: Computer,
   },
   {

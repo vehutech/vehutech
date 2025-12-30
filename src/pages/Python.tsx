@@ -29,8 +29,6 @@ interface BlurTextProp {
 const BlurText = ({
   text,
   delay,
-  animateBy,
-  direction,
   className,
   onAnimationComplete,
 }: BlurTextProp) => {
@@ -109,7 +107,7 @@ const Squares = ({
   );
 };
 
-const PythonChallengeWriteup = () => {
+const learnPython = () => {
   const [isDark, setIsDark] = useState(false);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
 
@@ -464,4 +462,4 @@ const PythonChallengeWriteup = () => {
   );
 };
 
-export default PythonChallengeWriteup;
+export default learnPython;
