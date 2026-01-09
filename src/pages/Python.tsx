@@ -20,22 +20,24 @@ import {
 interface BlurTextProp {
   text: string;
   delay: number;
-  animateBy: string;
-  direction: string;
-  className: string;
-  onAnimationComplete: boolean;
+  animateBy?: string;
+  direction?: string;
+  className?: string;
+  onAnimationComplete?: () => void;
 }
 
 const BlurText = ({
   text,
   delay,
-  className,
+  className = "",
   onAnimationComplete,
 }: BlurTextProp) => {
   React.useEffect(() => {
     const timer = setTimeout(
       () => {
-        onAnimationComplete?.();
+        if (onAnimationComplete) {
+          onAnimationComplete();
+        }
       },
       delay * text.split(" ").length + 2000,
     );
@@ -69,15 +71,17 @@ const TrueFocus = ({ sentence, borderColor }: TrueFocusProp) => {
   );
 };
 
-const Squares = ({
-  speed,
-  squareSize,
-  direction,
-  borderColor,
-  hoverFillColor,
-}) => {
+interface SquaresProps {
+  speed?: number;
+  squareSize?: number;
+  direction?: string;
+  borderColor: string;
+  hoverFillColor?: string;
+}
+
+const Squares = ({ borderColor }: SquaresProps) => {
   return (
-    <div className=" absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden">
       <div className="absolute inset-0 opacity-20">
         <div className="grid grid-cols-12 gap-1 h-full w-full">
           {[...Array(144)].map((_, i) => (
@@ -93,7 +97,7 @@ const Squares = ({
           ))}
         </div>
       </div>
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0% {
             transform: translateY(0px) rotate(0deg);
@@ -107,17 +111,12 @@ const Squares = ({
   );
 };
 
-const learnPython = () => {
-  const [isDark, setIsDark] = useState(false);
+const LearnPython = () => {
+  const isDark = useState(false);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
 
   const handleAnimationComplete = () => {
     setIsAnimationComplete((prev) => !prev);
-  };
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle("dark");
   };
 
   return (
@@ -141,11 +140,7 @@ const learnPython = () => {
             ) : (
               <TrueFocus
                 sentence="Python Mastery"
-                manualMode={false}
-                blurAmount={5}
                 borderColor={isDark ? "#11e5fb" : "#2653fb"}
-                animationDuration={2}
-                pauseBetweenAnimations={1}
               />
             )}
             <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-lg">
@@ -462,4 +457,4 @@ const learnPython = () => {
   );
 };
 
-export default learnPython;
+export default LearnPython;

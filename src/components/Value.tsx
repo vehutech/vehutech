@@ -1,6 +1,5 @@
 import DecryptedText from "./DecryptedText";
 import Hyperspeed from "./HyperSpeed";
-// import SplashCursor from "./SplashColor";
 
 const Value = () => {
   return (

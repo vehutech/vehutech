@@ -24,10 +24,11 @@ const buildKeyframes = (
     ...Object.keys(from),
     ...steps.flatMap((s) => Object.keys(s)),
   ]);
-
   const keyframes: Record<string, Array<string | number>> = {};
   keys.forEach((k) => {
-    keyframes[k] = [from[k], ...steps.map((s) => s[k])];
+    const fromValue = from[k] ?? 0; // Provide default value
+    const stepValues = steps.map((s) => s[k] ?? fromValue); // Use fromValue as fallback
+    keyframes[k] = [fromValue, ...stepValues];
   });
   return keyframes;
 };
@@ -54,7 +55,7 @@ const BlurText: React.FC<BlurTextProps> = ({
     if (!ref.current) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setInView(true);
           observer.unobserve(ref.current as Element);
         }

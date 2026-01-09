@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import type {HTMLMotionProps} from "framer-motion"
+import type { HTMLMotionProps } from "framer-motion";
 
 interface DecryptedTextProps extends HTMLMotionProps<"span"> {
   text: string;
@@ -95,10 +95,9 @@ export default function DecryptedText({
 
         for (let i = nonSpaceChars.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
-          [nonSpaceChars[i], nonSpaceChars[j]] = [
-            nonSpaceChars[j],
-            nonSpaceChars[i],
-          ];
+          const temp = nonSpaceChars[i]!;
+          nonSpaceChars[i] = nonSpaceChars[j]!;
+          nonSpaceChars[j] = temp;
         }
 
         let charIndex = 0;
